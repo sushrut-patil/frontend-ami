@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import Login from './components/Login';
 import Register from './components/Register';
+import Department from './components/Department.js'
+import Employee from './components/Employee.js'
 import Dashboard from './components/Dashboard';
 
 // Protected route component
@@ -27,6 +29,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/Department" element={<Department />} />
+          <Route path="/Employee" element={<Employee />} />
           <Route 
             path="/dashboard" 
             element={

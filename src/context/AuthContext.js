@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { BaseUrl } from './Context';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
           
           // Fetch user profile
-          const response = await axios.get('http://localhost:8000/api/auth/profile/');
+          const response = await axios.get(`${BaseUrl}/api/auth/profile/`);
           setUser(response.data);
         } catch (error) {
           // Token might be expired
