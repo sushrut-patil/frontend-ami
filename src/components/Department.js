@@ -51,16 +51,21 @@ export default function Department() {
     }
   };
   // Create a new department
-  const createDepartment = async (departmentData) => {
+  const createDepartment = async (newDept) => {
     try {
-      const response = await api.post(API_URL, departmentData);
-      const newDepartment = response.data;
-      setDepartments([...departments, newDepartment]);
-      showNotification('Department created successfully!', 'success');
+      // Find max dept_id in the current departments list
+      const maxId = departments.reduce((max, dept) => Math.max(max, dept.dept_id || 0), 0);
+      const newDeptWithId = { ...newDept, dept_id: maxId + 1 };
+  
+      const response = await axios.post('http://localhost:8000/api/access/departments/', newDeptWithId, {
+        withCredentials: true,
+      });
+      setDepartments([...departments, response.data]);
+      showNotification('Department added successfully!', 'success');
       return true;
     } catch (err) {
-      console.error('Error creating department:', err);
-      showNotification(`Failed to create department: ${err.response?.data?.error || 'Unknown error'}`, 'error');
+      console.error('Failed to add department:', err);
+      setError('Could not add department.');
       return false;
     }
   };
