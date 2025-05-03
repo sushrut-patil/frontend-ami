@@ -74,6 +74,8 @@ export default function Department() {
   const updateDepartment = async (dept_id, departmentData) => {
     try {
       const response = await api.put(`${API_URL}${dept_id}/`, departmentData);
+      console.log(response.data);
+      
       const updatedDepartment = response.data;
       const updatedDepartments = departments.map(dept => 
         dept.dept_id === dept_id ? updatedDepartment : dept
