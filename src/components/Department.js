@@ -21,8 +21,8 @@ export default function Department() {
   const [notification, setNotification] = useState({ show: false, message: '', type: '' });
 
   // API endpoint based on Django viewset
-  const API_URL = 'api/access/departments';
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  const API_URL = 'api/access/departments/';
+  
 
   // Set up axios instance with CSRF token
   const api = axios.create({
@@ -39,28 +39,17 @@ export default function Department() {
   
   // Fetch departments from backend
   const fetchDepartments = async () => {
-    // setIsLoading(true);
-    // try {
-    //   const response = await api.get(API_URL);
-    //   console.log(response);
-      
-    //   setDepartments(response.data);
-    //   setIsLoading(false);
-    // } catch (err) {
-    //   setError('Failed to fetch departments. Please try again later.');
-    //   console.error('Error fetching departments:', err);
-    //   setIsLoading(false);
-    // }
-    axios.get('http://localhost:8000/api/access/departments')
-  .then(response => {
-    const users = response.data;
-    console.log(users)
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
+    setIsLoading(false)
+    try {
+      const response = await axios.get('http://localhost:8000/api/access/departments/', {
+        withCredentials: true, // Ensure credentials are sent
+      });
+      setDepartments(response.data.results)
+      console.log(response.data.results);
+    } catch (error) {
+      console.error('Failed to fetch departments:', error);
+    }
   };
-
   // Create a new department
   const createDepartment = async (departmentData) => {
     try {
