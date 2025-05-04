@@ -11,8 +11,7 @@ import ThreatDetection from './components/ThreatDetection';
 import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
 import AccessManagement from './components/AccessManagement';
-
-
+import ThreatPathAnalysis from './components/ThreatPathAnalysis';
 
 
 // Protected route component
@@ -101,6 +100,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ThreatDetection />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/ThreatPathAnalysis"
+            element={
+              <ProtectedRoute>
+                <ThreatPathAnalysis/>
               </ProtectedRoute>
             }
           />

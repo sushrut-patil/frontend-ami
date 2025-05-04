@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { AlertCircle, Shield, Plus, Trash2, Clock, AlertTriangle, RefreshCw } from 'lucide-react';
 import axios from 'axios';
-
+import ThreatCard from './ThreatCard'
 // API endpoint for threats
-const API_URL = 'http://localhost:8000/api/access/threat/';
+const API_URL = 'http://localhost:8000/api/logs/threat/';
 
 const ThreatDetection = () => {
   const [threats, setThreats] = useState([]);
@@ -272,47 +272,12 @@ const ThreatDetection = () => {
             </div>
           ) : (
             filteredThreats.map(threat => (
-              <div key={threat.id} className="bg-gray-800 rounded-lg overflow-hidden">
-                <div className="flex items-center px-6 py-4">
-                  <div className={`h-16 w-2 rounded-full ${getSeverityStyle(threat.severity)} mr-4`}></div>
-                  <div className="flex-grow">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold">{threat.title}</h3>
-                      <div className="flex items-center gap-3">
-                        {threat.status === 'active' ? (
-                          <button
-                            onClick={() => handleUpdateStatus(threat.id, 'resolved')}
-                            className="px-3 py-1 rounded-full text-xs bg-red-900 text-red-300 hover:bg-red-800"
-                            disabled={loading}
-                          >
-                            {threat.status}
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() => handleUpdateStatus(threat.id, 'active')}
-                            className="px-3 py-1 rounded-full text-xs bg-green-900 text-green-300 hover:bg-green-800"
-                            disabled={loading}
-                          >
-                            {threat.status}
-                          </button>
-                        )}
-                        <button 
-                          onClick={() => handleDeleteThreat(threat.id)}
-                          className="text-gray-400 hover:text-red-500 transition-colors"
-                          disabled={loading}
-                        >
-                          <Trash2 size={18} />
-                        </button>
-                      </div>
-                    </div>
-                    <p className="text-gray-400 mt-1">{threat.description}</p>
-                    <div className="flex items-center mt-2 text-sm text-gray-500">
-                      <Clock size={14} className="mr-1" />
-                      <span>{formatTime(threat.timestamp)}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ThreatCard
+                key={threat.id}
+                threat={threat}
+                handleUpdateStatus={handleUpdateStatus}
+                loading={loading}
+              />
             ))
           )}
         </div>
