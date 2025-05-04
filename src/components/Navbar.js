@@ -37,8 +37,8 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/chatbot" className="hover:text-green-400">
-              Chatbot
+            <NavLink to="/compliance-chatbot" className="hover:text-green-400">
+              Compliance & Chatbot
             </NavLink>
           </li>
           <li>
