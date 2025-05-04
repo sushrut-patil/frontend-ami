@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-white p-4 shadow-md">
+    <nav className="bg-blue-800 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-xl font-bold">ThreatIQ</div>
         <ul className="flex space-x-6 items-center">
@@ -34,6 +34,11 @@ const Navbar = () => {
           <li>
             <NavLink to="/ThreatPathAnalysis" className="hover:text-green-400">
               Threat Path Analysis
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/chatbot" className="hover:text-green-400">
+              Chatbot
             </NavLink>
           </li>
           <li>
