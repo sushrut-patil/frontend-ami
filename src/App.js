@@ -12,6 +12,8 @@ import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
 import AccessManagement from './components/AccessManagement';
 import Chatbot from './components/chatbot';
+import ComplianceManager from './components/ComplianceManager';
+
 
 
 
@@ -54,13 +56,13 @@ function App() {
             }
           />
           <Route
-  path="/access-management"
-  element={
-    <ProtectedRoute>
-      <AccessManagement />
-    </ProtectedRoute>
-  }
-/>  <Route
+            path="/access-management"
+            element={
+              <ProtectedRoute>
+                <AccessManagement />
+              </ProtectedRoute>
+            }
+          />  <Route
   path="/chatbot"
   element={
     <ProtectedRoute>
@@ -68,6 +70,14 @@ function App() {
     </ProtectedRoute>
   }
 />
+          <Route
+            path="/compliance-chatbot"
+            element={
+              <ProtectedRoute>
+                <ComplianceManager />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="/access-management/department"

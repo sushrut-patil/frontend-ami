@@ -3,7 +3,7 @@ import { AlertCircle, Shield, Plus, Trash2, Clock, AlertTriangle, RefreshCw } fr
 import axios from 'axios';
 
 // API endpoint for threats
-const API_URL = 'http://localhost:8000/api/access/threat/';
+const API_URL = 'http://localhost:8000/api/logs/threat/';
 
 const ThreatDetection = () => {
   const [threats, setThreats] = useState([]);
