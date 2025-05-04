@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-white p-4 shadow-md">
+    <nav className="bg-blue-800 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-xl font-bold">Security Dashboard</div>
         <ul className="flex space-x-6 items-center">
@@ -29,6 +29,11 @@ const Navbar = () => {
           <li>
             <NavLink to="/ThreatDetection" className="hover:text-green-400">
               Threat Detection
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/chatbot" className="hover:text-green-400">
+              Chatbot
             </NavLink>
           </li>
           <li>

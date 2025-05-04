@@ -11,7 +11,7 @@ import ThreatDetection from './components/ThreatDetection';
 import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
 import AccessManagement from './components/AccessManagement';
-
+import Chatbot from './components/chatbot';
 
 
 
@@ -58,6 +58,13 @@ function App() {
   element={
     <ProtectedRoute>
       <AccessManagement />
+    </ProtectedRoute>
+  }
+/>  <Route
+  path="/chatbot"
+  element={
+    <ProtectedRoute>
+      <Chatbot />
     </ProtectedRoute>
   }
 />
